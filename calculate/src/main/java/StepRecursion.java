@@ -19,11 +19,24 @@ public class StepRecursion {
         map.put(n, sum);
         return sum;
     }
-    //// TODO: 2021/9/6 明天加一下循环的方式 
+    public int countFor(int n) {
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+        int pre = 2;
+        int prePre = 1;
+        int ret = 0;
+        for (int i = 3; i <= n; i++) {
+            ret = pre + prePre;
+            prePre = pre;
+            pre = ret;
+        }
+        return ret;
+    }
 
     public static void main(String[] args) {
         StepRecursion stepRecursion = new StepRecursion();
-        System.out.println(stepRecursion.count(7));
+        System.out.println(stepRecursion.count(10));
+        System.out.println(stepRecursion.countFor(10));
     }
 
 }
